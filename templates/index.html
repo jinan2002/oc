@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Property Price</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #8DB5D2;
+            direction: rtl;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            color: #4C5270; /* لون النص الموحد */
+        }
+
+        .box {
+            background: #C9DCE8;
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #4C5270;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Enter property features</h2>
+        <form action="/predict" method="post">
+            <input type="number" name="area" placeholder="Area size" required><br>
+
+            <input type="text" name="city" placeholder="City" required><br>
+            <input type="text" name="region" placeholder="Region" required><br>
+            <select name="property_type" required>
+                <option value="" disabled selected hidden>Choose property type</option>
+                <option value="سكني">Residential</option>
+                <option value="تجاري">Commercial</option>
+                <option value="صناعي">Industrial</option>
+            </select><br>
+
+
+            <button type="submit">Calculate The Price</button>
+        </form>
+        <h3></h3>
+    </div>
+</body>
+</html>
+
+
