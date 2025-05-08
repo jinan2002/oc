@@ -2,6 +2,15 @@ from flask import Flask, request, render_template
 import joblib
 import numpy as np
 import pandas as pd
+import gdown
+import os
+
+model_path = "random_forest_model.pkl"
+
+if not os.path.exists(model_path):
+    url = 'https://drive.google.com/uc?id= https://drive.google.com/file/d/1f9ZTqiMxaDCaBFZ85BS41hMpYyif0QBe '  # استبدل هذا بالـ ID الحقيقي
+    gdown.download(url, model_path, quiet=False)
+
 
 app = Flask(__name__)
 model = joblib.load('random_forest_model.pkl')
