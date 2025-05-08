@@ -2,9 +2,13 @@ from flask import Flask, request, render_template
 import joblib
 import numpy as np
 import pandas as pd
+import gzip  # ضروري لأن الملف مضغوط
 
 app = Flask(__name__)
-model = joblib.load('random_forest_model.pkl')
+
+# تحميل النموذج من ملف .pkl.gz المضغوط
+with gzip.open('random_forest_model.pkl.gz', 'rb') as f:
+    model = joblib.load(f)
 
 @app.route('/')
 def home():
@@ -17,7 +21,7 @@ def predict():
     region = request.form['region']
     property_type = request.form['property_type']
 
-    # حول البيانات إلى DataFrame كما استخدمته أثناء التدريب
+    # تحويل البيانات إلى DataFrame مثل وقت التدريب
     input_df = pd.DataFrame([{
         'area': area,
         'city': city,
